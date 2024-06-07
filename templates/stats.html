@@ -1,0 +1,209 @@
+{% extends  'base.html' %}
+
+{% block navbar %} shadow p-2 mb-3 bg-white rounded{% endblock navbar %}
+
+
+{% block title %}Stats{% endblock title %}
+
+{% block astats %}active{% endblock astats %}
+
+{% block body %}
+
+
+<P class="px-4 mb-0"> Covid-19 Tracker | {{ Country }} </P>
+<h2 class="px-4 py-0 mb-0"><strong> Overall Stats</strong></h2>
+
+<div class="container-fluid px-4 py-4 justify-content-center align-items-center">
+    <div class="row ">
+        <div class="col-md-3 mb-3 ">
+            <div class="card shadow bg-primary rounded" style="min-height : 200px; --bs-bg-opacity: .9;">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-center">Total Cases</h5>
+                    <hr>
+                    <h4 class="card-text text-center align-items-center"><strong><br>{{ total_cases }}</strong></h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow bg-warning rounded" style="min-height : 200px; --bs-bg-opacity: .9;">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-center">Active Cases </h5>
+                    <hr>
+                    <h4 class="card-text text-center align-items-center"><strong><br>{{ Active }}</strong></h4>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow bg-success rounded" style="min-height : 200px; --bs-bg-opacity: .9;">
+                <div class="card-body p-4  ">
+                    <h5 class="card-title text-center">Recovered Cases</h5>
+                    <hr>
+                    <h4 class="card-text text-center align-items-center"><strong><br>{{ recovered }}</strong></h4>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow bg-danger rounded" style="min-height : 200px;--bs-bg-opacity: .9;">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-center">Number of Deaths</h5>
+                    <hr>
+                    <h4 class="card-text text-center align-items-center"><strong><br>{{ total_deaths }}</strong></h4>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+
+
+        <div class="col-md-3 mb-3 ">
+            <div class="card d-flex shadow bg-info rounded" style="min-height : 200px;--bs-bg-opacity: .7;">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-center">Details stats</h5>
+
+                    <hr>
+                    <p class="card-text text-start"><strong>New Cases :</strong>{{ new_cases }} | <strong
+                            class="card-text ">New Deaths :</strong>{{ new_deaths }}</p>
+                    <p class="card-text text-Center"><strong>Last Update: </strong>{{ Update }}</p>
+                    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-9 mb-3">
+            <div class="card shadow bg-secondary rounded" style="min-height: 200px; --bs-bg-opacity: .7;">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-start">Overal Tabular View | Country wise</h5>
+                    <hr>
+
+                    <div class="table-responsive rounded-3">
+                        <table class="table " style="background-color: transparent;">
+                            <thead>
+                            <tr>
+                                <th class="table-dark" scope="col">#</th>
+                                <th class="table-dark" scope="col">Country</th>
+                                <th class="table-dark" scope="col">Active Cases</th>
+                                <th class="table-dark" scope="col">Total Cases</th>
+                                <th class="table-dark" scope="col">Total Deaths</th>
+                                <th class="table-dark" scope="col">Total Recovered</th>
+                                <th class="table-dark" scope="col">New Cases</th>
+                                <th class="table-dark" scope="col">New Deaths</th>
+                                <th class="table-dark" scope="col">Last Updated</th>
+                            </tr>
+                            </thead>
+                            <tbody id="table-body">
+                            {% for entry in overalworld %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td style="background-color: transparent;">{{ entry.Country_text }}</td>
+                                <td>{{ entry.Active_Cases_text }}</td>
+                                <td style="background-color: transparent;">{{ entry.Total_Cases_text }}</td>
+                                <td>{{ entry.Total_Deaths_text }}</td>
+                                <td style="background-color: transparent;">{{ entry.Total_Recovered_text }}</td>
+                                <td>{{ entry.New_Cases_text }}</td>
+                                <td style="background-color: transparent;">{{ entry.New_Deaths_text }}</td>
+                                <td>{{ entry.Last_Update }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                {% if overalworld.has_previous %}
+                                <li class="page-item"><a class="page-link"
+                                                         href="?page={{ overalworld.previous_page_number }}">Previous</a>
+                                </li>
+                                {% endif %}
+                                <li class="page-item active"><span class="page-link">{{ overalworld.number }}</span>
+                                </li>
+                                {% if overalworld.has_next %}
+                                <li class="page-item"><a class="page-link"
+                                                         href="?page={{ overalworld.next_page_number }}">Next</a></li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>const Active = parseInt("{{ Active }}");
+const total_cases = parseInt("{{ total_cases }}");
+const total_deaths = parseInt("{{ total_deaths }}");
+const recovered = parseInt("{{ recovered }}");
+const new_cases = parseInt("{{ new_cases }}");
+const new_deaths = parseInt("{{ new_deaths }}");
+
+// Remove the leading "+" from Active if it exists
+const ActiveValue = (Active > 0) ? Active : -Active;
+
+
+const xValues = ["Active Cases", "Total Cases", "Total Deaths", "Recovered", "New Cases", "New Deaths"];
+const yValues = [ActiveValue, total_cases, total_deaths, recovered, new_cases, new_deaths];
+
+ barColors = [
+  "#0074D9", // Blue
+  "#FF4136", // Red
+  "#2ECC40", // Green
+  "#FF851B", // Orange
+  "#F012BE", // Purple
+  "#01FF70"  // Light Green
+];
+
+new Chart("myChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "World Wide Wine Production 2018",
+      fontSize: 18,
+      fontColor: "#333" // Title text color
+    },
+    legend: {
+      display: true,
+      position: 'bottom', // Place the legend at the bottom
+      labels: {
+        boxWidth: 20, // Adjust the width of each legend item box
+        usePointStyle: true, // Use a small dot as the legend marker
+        fontColor: "#333" // Legend text color
+      }
+    },
+    plugins: {
+      datalabels: {
+        color: "#333", // Data label text color
+        font: {
+          weight: "bold" // Data label font weight
+        }
+      }
+    }
+  }
+});
+</script>
+
+
+{% endblock body %}

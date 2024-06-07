@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+{% block navbar %}bg-white{% endblock navbar %}
+
+{% block title %}Home{% endblock title %}
+
+{% block aindex %}active{% endblock aindex %}
+
+{% block colorindex %}bg-warning{% endblock colorindex %}
+
+{% block body %}
+{% load static %}
+<div class="container-fluid px-0">
+    <div class="container-fluid py-4 bg-warning justify-content-center align-items-center">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="container bg-warning containerdistheight d-flex">
+                    <div class="card" style="border: none; background: transparent;">
+                        <div class="card-body py-0">
+                            <div class="randomlenght"></div>
+                            <h2 class="card-title text-start display-1 titlesize">
+                                <strong><strong>Covid-19</strong></strong></h2>
+                            <div class="randomlenght1"></div>
+                            <p class="card-text text-justify">Welcome to [Your Website Name], your trusted source for
+                                COVID-19 information.
+                                <br>
+                                In these uncertain times, staying informed is crucial. Our mission is to provide you
+                                with
+                                the latest COVID-19 statistics, news, and resources, all in one place.
+                                <br>
+                                Explore our site to access up-to-date information and tools that can help you protect
+                                yourself and your loved ones.
+                                <br>
+                                Together, we can navigate these challenging times.</p>
+                            <div class="randomlenght1"></div>
+                            <div class="d-flex">
+                                <p class="card-text ms-2 text-white">Explore Stats</p>
+                                <a href="/stats">
+                                    <button class="btn btn-primary text-white" type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor" class="bi bi-graph-down" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                  d="M0 0h1v15h15v1H0V0Zm14.817 11.887a.5.5 0 0 0 .07-.704l-4.5-5.5a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61 4.15 5.073a.5.5 0 0 0 .704.07Z"/>
+                                        </svg>
+                                        <strong>Stats</strong>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="container bg-warning containerdistheight d-flex justify-content-center align-items-center">
+                    <div class="card py-2" style="border: none; background: transparent;">
+                        <img class="card-image-center" src="{% static '/covid_app/images/images1.png/' %}"
+                             alt="COVID-19 Image">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Add your existing CSS here */
+
+    /* Media Query for screens smaller than 768px */
+    @media (max-width: 768px) {
+        .containerdistheight {
+            height: auto; /* Allow the height to adjust based on content on smaller screens */
+        }
+
+        /* Styles for the first card on smaller screens */
+        .first-card {
+            font-size: 13px;
+        }
+
+        /* Other styles for smaller screens */
+        h2 {
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        .thikness {
+            font-size: 30px;
+        }
+
+        .ms-2 {
+            margin-right: 2rem;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+
+    /* Media Query for screens equal to or larger than 768px */
+    @media (min-width: 768px) {
+        .containerdistheight {
+            height: auto; /* Allow the height to adjust based on content on smaller screens */
+        }
+
+        /* Styles for the first card on larger screens */
+        .first-card {
+            font-size: 24px; /* Increase font size for larger screens */
+        }
+
+        /* Other styles for larger screens */
+        h2 {
+            font-size: 24px; /* Increase font size for larger screens */
+            font-weight: bold;
+        }
+
+        .thikness {
+            font-size: 36px; /* Increase font size for larger screens */
+        }
+
+        .ms-2 {
+            margin-right: 2rem;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    }
+
+    /* Media Query for screens equal to or larger than 992px */
+    @media (min-width: 992px) {
+        .containerdistheight {
+            height: 85vh; /* Set the height to 85vh on larger screens */
+        }
+
+        .ms-2 {
+            margin-right: 2rem;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .randomlenght {
+            /* container styles for PC */
+            height: 13vh;
+        }
+
+        .randomlenght1 {
+            /* container styles for PC */
+            height: 5vh;
+        }
+    }
+
+    /* Media Query for screens smaller than 992px */
+    @media (max-width: 991px) {
+        .randomlenght,
+        .randomlenght1 {
+            display: none;
+        }
+
+        .btn {
+            /* Remove the class attribute here */
+        }
+    }
+
+    .btn-primary {
+        background-color: #9370DB; /* Change to your preferred button color */
+        border-color: #9370DB;
+    }
+
+    .btn-primary:hover {
+        background-color: #6A5ACD; /* Change to a darker shade for hover effect */
+        border-color: #6A5ACD;
+    }
+
+    .btn-primary:focus {
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Add focus shadow effect */
+    }
+
+    .card-image-center {
+        max-height: 90%;
+        max-width: 90%;
+        height: auto;
+        width: auto;
+    }
+</style>
+
+
+{% endblock body %}

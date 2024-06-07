@@ -1,0 +1,103 @@
+{% extends  'base.html' %}
+
+{% block navbar %} shadow p-2 mb-3 bg-white rounded{% endblock navbar %}
+
+
+{% block title %}About Us {% endblock title %}
+
+{% block aabout %}active{% endblock aabout %}
+
+{% block body %}
+
+<div class="container shadow bg-white rounded-4 mb-5">
+    <div class="container pt-4 mb-5  paddabout">
+        <header>
+            <h1 class="text-center display-1"><strong><strong>About Us</strong></strong></h1>
+
+        </header>
+        <hr>
+        <section>
+            <h2><br>Welcome to Covid-19 Tracker</h2>
+            <p>Your reliable destination for a wealth of up-to-date and thorough COVID-19 information. In these
+                unparalleled and challenging times, maintaining a high level of awareness and diligently adhering to
+                essential safety measures is absolutely crucial. Our commitment is unwavering, and we are dedicated to
+                providing you with invaluable support as you navigate your way towards a future that is not only safer
+                but also characterized by enhanced well-being and health.</p>
+        </section>
+        <section>
+            <h2><br>Our Team</h2>
+            <p>At Covid-19 Tracker, we are a passionate team of three individuals driven by a singular mission - to
+                provide you with the most accurate and accessible COVID-19 statistics and resources available. Our team
+                members bring diverse expertise in data analysis, web development, and public health, ensuring that the
+                information we provide is reliable, up-to-date, and presented in a user-friendly manner.</p>
+        </section>
+        <section>
+            <h2><br>What We Offer</h2>
+            <p><strong>Real-Time Statistics:</strong> On our Stats page, you'll find the latest statistics on the
+                COVID-19 pandemic. This includes the total number of cases, vaccination progress, recovered cases, and
+                sadly, the number of lives lost. To enhance your understanding, we provide graphical representations and
+                pie charts that visually illustrate the impact of the pandemic.</p>
+            <p><strong>Recovery and Resources:</strong> Our Recovery and Resources section goes beyond just numbers.
+                Here, you'll discover valuable tips and precautions to protect yourself and your loved ones. We offer
+                guidance on how to stay safe, prevent the spread of the virus, and what to do if you or someone you know
+                becomes infected. Additionally, we provide information on where to find testing centers, vaccination
+                sites, and other critical services in your area.</p>
+            <p><strong>Contact Us:</strong> Your feedback is essential to us. We value your input and encourage you to
+                reach out through our Contact Us page. Whether you have questions, suggestions, or specific data
+                requests, we are here to listen and respond. Your feedback helps us improve our services and tailor our
+                content to better serve your needs.</p>
+        </section>
+        <section>
+            <h2><br>Our Commitment</h2>
+            <p>At Covid-19 Tracker, we are committed to maintaining the highest standards of accuracy, transparency, and
+                accessibility. We understand the dynamic nature of the pandemic, and we diligently update our
+                information to reflect the latest developments. Our primary goal is to empower you with knowledge and
+                resources, enabling you to make informed decisions to protect yourself and your community.</p>
+            <p>We believe that by providing reliable information, promoting awareness, and fostering a sense of unity,
+                we can collectively overcome the challenges posed by the COVID-19 pandemic. Together, we can create a
+                safer, healthier, and more resilient world.</p>
+        </section>
+        <section>
+            <h2><br>Our Vision</h2>
+            <p>Our vision at Covid-19 Tracker is to be a beacon of hope during these challenging times. We aim to not
+                only provide data but also to inspire and educate. We envision a future where communities are
+                well-informed and empowered to make informed choices that protect their health and well-being.</p>
+        </section>
+        <section>
+            <h2><br>Get Involved</h2>
+            <p>We encourage you to get involved in our mission. Share our resources with your friends and family,
+                participate in local vaccination drives, and continue following safety guidelines. Together, we can make
+                a difference in the fight against COVID-19.</p>
+        </section>
+        <footer>
+            <p>Thank you for choosing Covid-19 Tracker as your source for COVID-19 information and resources. We are
+                honored to be part of your journey towards a brighter future.</p>
+            <p>Stay safe, stay informed, and let us know how we can continue to support you.</p>
+        </footer>
+
+    </div>
+
+</div>
+
+
+<style>
+
+
+    /* Adjust the padding for smaller screens using a media query */
+
+    @media (min-width: 768px) {
+        .paddabout {
+            padding: 8rem ; /* Adjust the padding for bigger screens */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .paddabout {
+            padding: 1rem ; /* Adjust the padding for smaller screens */
+        }
+    }
+
+</style>
+
+
+{% endblock body %}

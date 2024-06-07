@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block navbar %}shadow p-2 mb-3 bg-white rounded{% endblock navbar %}
+
+{% block title %}Contact Us{% endblock title %}
+
+{% block acontact %}active{% endblock acontact %}
+
+{% block body %}
+
+{% load static %}
+
+
+<div class="container shadow bg-white rounded-5" style="min-height: 80vh;">
+    <div class="container-sm w-85 py-3">
+        <div class="container mb-3">
+            <header>
+                <h1 class="text-center display-1"><strong><strong>Contact Us</strong></strong></h1>
+
+            </header>
+        </div>
+
+        <form method="POST" action="/contact" id="contactForm">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name"><strong>Name:</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" 0+id="name" name="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1"><strong>Email address:</strong> <span
+                        class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="example@gmail.com"
+                       name="email" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="phone"><strong>Mobile Number (including country code):</strong></label>
+                <input type="tel" class="form-control" id="phone" placeholder="+12345678901" name="phnum"
+                       aria-describedby="telhelp" pattern="^\+[0-9]{1,4}[0-9]{7,11}$">
+                <div id="telhelp" class="form-text">We'll never share your mobile number with anyone else.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1"><strong>Comments, Feedback, or Requests:</strong> <span
+                        class="text-danger">*</span></label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="feedback" rows="6"></textarea>
+            </div>
+
+            <button type="submit" id="submitButton" class="btn btn-dark">Submit</button>
+        </form>
+
+    </div>
+
+
+</div>
+
+
+{% endblock body %}
